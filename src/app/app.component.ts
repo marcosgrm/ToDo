@@ -14,13 +14,17 @@ export class AppComponent {
     return this.model.user;
   }
 
-  getTodoItems(){
+ getTodoItems(){
     return this.model.items.filter(item => !item.done);
   }
 
-  addItem(newItem){
+  getTodoItemsConcluidas(){
+    return this.model.items.filter(item => item.done);
+  }
+
+  addItem(newItem, prioridade){
     if(newItem != ""){
-      this.model.items.push(new TodoItem(newItem, false));
+      this.model.items.push(new TodoItem(newItem, false, prioridade));
     }
   }
 }
