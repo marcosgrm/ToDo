@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+.tituloVersao{
+    text-align:center;
+}
+
+.campoAtributo{
+    font-weight: bold;
+}
+
+.rodape {
+    font-family: Arial;
+    font-size: x-small;
+    text-align: center;
+    color: #b8b8b8
+}
+

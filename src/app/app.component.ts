@@ -22,9 +22,9 @@ export class AppComponent {
     return this.model.items.filter(item => item.done);
   }
 
-  addItem(newItem, prioridade){
+  addItem(newItem, prioridade, dataTermino){
     if(newItem != ""){
-      this.model.items.push(new TodoItem(newItem, false, prioridade));
+      this.model.items.push(new TodoItem(newItem, false, prioridade, dataTermino));
     }
   }
 }
