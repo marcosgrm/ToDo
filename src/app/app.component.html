@@ -5,6 +5,7 @@
   <div class="my-1">
     <input class="form-control" #todoText />
     <br>
+    
     <div class="campoAtributo">Prioridade
       <select name="prioridade" #todoPrioridade>
         <option value="Alta">Alta</option>
@@ -16,7 +17,9 @@
 
     <div class="campoAtributo">Data de limite de término
       <input type="date" #todoDataLimite>
+      <br>Data de Hoje:     {{this.model.dataAtual()}}
     </div>
+
     <br>
     <br>
     <button class="btn btn-success mt-1 btn-lg btn-block"
@@ -36,7 +39,6 @@
         <th>#</th>
         <th>Description</th>
         <th>Prioridade</th>
-        <th>Data Limite (AAAA-MM-DD)</th>
         <th>Fazer?</th>
         <th>Done</th>
       </tr>
@@ -46,7 +48,6 @@
         <td>{{ i + 1 }}</td>
         <td>{{ item.action }}</td>
         <td>{{ item.prioridade }}</td>
-        <td>{{ item.dataTermino }}</td>
         <td><input type="checkbox" [(ngModel)]="item.done" /></td>
         <td [ngSwitch]="item.done">
           <span *ngSwitchCase="true">Yes</span>
@@ -242,11 +243,52 @@
 
 
   <!-- Versão 1.4 e 1.5 -->
-  <h2 class="tituloVersao"> VERSÕES 1.4 E 1.5</h2>
+  <h2 class="tituloVersao"> VERSÃO 1.4</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Description</th>
+        <th>Prioridade</th>
+        <th>Data Limite (AAAA-MM-DD)</th>
+        <th>Fazer?</th>
+        <th>Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getTodoItems(); let i = index;">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.action }}</td>
+        <td>{{ item.prioridade }}</td>
+        <td>{{ item.dataTermino }}</td>
+        <td><input type="checkbox" [(ngModel)]="item.done" /></td>
+        <td [ngSwitch]="item.done">
+          <span *ngSwitchCase="true">Yes</span>
+          <span *ngSwitchDefault>No</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Lista de tarefas concluídas-->
+  <table class="table table-bordered bg-light">
+    <thead class="thead-light">
+      <tr>
+        <th>Concluídas</th>
+        <th>Done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getTodoItemsConcluidas();">
+        <td style="text-decoration:line-through;">{{ item.action }}</td>
+        <td><input type="checkbox" [(ngModel)]="item.done" /></td>
+      </tr>
+    </tbody>
+  </table>
+
 
 </div>
 
-<footer class="rodape">
+<footer class="rodape bg-primary p-1 text-white">
   marcosgrm, 2019
   <br>
   <p>Marcos Gabriel Rodrigues Melo</p>

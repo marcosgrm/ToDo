@@ -10,21 +10,26 @@ import { Model, TodoItem } from './model';
 export class AppComponent {
   model = new Model();
 
-  getName(){
+  getName() {
     return this.model.user;
   }
 
- getTodoItems(){
+  getTodoItems() {
     return this.model.items.filter(item => !item.done);
   }
 
-  getTodoItemsConcluidas(){
+  getTodoItemsConcluidas() {
     return this.model.items.filter(item => item.done);
   }
 
-  addItem(newItem, prioridade, dataTermino){
-    if(newItem != ""){
+  addItem(newItem, prioridade, dataTermino) {
+    if (newItem != "") {
       this.model.items.push(new TodoItem(newItem, false, prioridade, dataTermino));
     }
   }
+
+
+
+
+
 }
