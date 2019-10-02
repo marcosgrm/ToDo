@@ -25,11 +25,8 @@ export class AppComponent {
   addItem(newItem, prioridade, dataTermino) {
     if (newItem != "") {
       this.model.items.push(new TodoItem(newItem, false, prioridade, dataTermino));
+      this.model.sortPorData();
     }
   }
-
-
-
-
 
 }
